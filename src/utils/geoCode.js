@@ -1,4 +1,4 @@
-const request = require("postman-request");
+// const request = require("postman-request");
 
 const geocodeData = {
     "batch": [
@@ -165,16 +165,17 @@ const geocodeData = {
 // console.log(`Latitude = ${JSON.stringify(geocodeData.batch[0].features[0].geometry.coordinates[0])}, Longitude =  ${geocodeData.batch[0].features[0].geometry.coordinates[1]}`)
 
 geoCode = (address, callback) => {
-    const url = `https://api.mapbox.com/search/geocode/v6/forward?q=${address}&access_token=pk.eyJ1Ijoic3VkaGFwcml5YSIsImEiOiJjbHZleXdibmUwZ2F3MmxsOXZzOTFhOWV6In0.YI-BSPzA6W6qUvdplPqnSQ`;
-    request({ url: url, json: true }, (error, response) => {
-        if(error) {
-           callback("Unable to connect to geocode service!", undefined);
-        } else if(response.body.error_code) {
-           callback("Unable to find geocode!", undefined);
-        } else {
-            callback(undefined, {latitude: geocodeData.batch[0].features[0].geometry.coordinates[0], longitude: geocodeData.batch[0].features[0].geometry.coordinates[1]})
-        }
-    });
+  return  callback("Unable to connect to geocode service!", undefined);
+    // const url = `https://api.mapbox.com/search/geocode/v6/forward?q=${address}&access_token=pk.eyJ1Ijoic3VkaGFwcml5YSIsImEiOiJjbHZleXdibmUwZ2F3MmxsOXZzOTFhOWV6In0.YI-BSPzA6W6qUvdplPqnSQ`;
+    // request({ url: url, json: true }, (error, response) => {
+    //     if(error) {
+    //        callback("Unable to connect to geocode service!", undefined);
+    //     } else if(response.body.error_code) {
+    //        callback("Unable to find geocode!", undefined);
+    //     } else {
+    //         callback(undefined, {latitude: geocodeData.batch[0].features[0].geometry.coordinates[0], longitude: geocodeData.batch[0].features[0].geometry.coordinates[1]})
+    //     }
+    // });
 };
 
 module.exports = geoCode;
